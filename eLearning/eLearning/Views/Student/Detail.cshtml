@@ -1,0 +1,67 @@
+﻿@model eLearning.Models.CourseFullDataViewModel
+
+@section PageTitle {Syllabus}
+@section StyleSheet {
+
+    <link rel="stylesheet" href="~/css/StudentBrowse.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="~/css/StudentDetailPage.css" />
+
+}
+
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="/student/browse" id="navCourses">Browse Courses</a>';
+        </li>
+    </ul>
+}
+
+@section NavBarButtons {
+    <button type="button" class="nav-user-menu btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="/student/dashboard?studentId=@(Model.FullDataUserId)">Dashboard</a>
+        <a class="dropdown-item" href="/home/logout">Sign Out</a>
+    </div>
+}
+
+@section Scripts {
+    <script src="~/js/StudentDetailPage.js"></script>
+}
+
+<main>
+
+    <div class="card" style="width: 50rem;">
+        <div class="card-body">
+            <h2>@Model.Name</h2>
+            <h4>@Model.Category</h4>
+            <p>@Model.Description</p>
+            <p>Duration: @Model.EstimatedDuration minutes</p>
+            <h5>Instructor: @Model.TeacherFirstName @Model.TeacherLastName</h5>
+        </div>
+    </div>
+    <div class="card" style="width: 50rem;">
+        <div class="card-body">
+            <h2 class="syllabus-title">Syllabus</h2>
+            <ol>
+                @{
+                    for (int i = 0; i < @Model.MyCurricula.Count; i++)
+                    {
+                        <li>@Model.MyCurricula[i].Description</li>
+                            <ul>
+                                @for (int j = 0; j < Model.MyCurriculaLineItems[i].Count; j++)
+                                {
+                                    <li>@Model.MyCurriculaLineItems[i][j].Description</li>
+                                }
+                            </ul>
+
+                    }
+                }
+            </ol>
+        </div>
+    </div>
+</main>
+

@@ -1,0 +1,18 @@
+main{
+	background-color: aliceblue;
+/*  background-color: #fef9b4; */
+/*	background-color: #f6ee31; */
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+main > span {
+    width: 100%;
+    font-size: 40px;
+    color: #3d7bce;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+}

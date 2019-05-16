@@ -1,0 +1,66 @@
+﻿@model eLearning.Models.AddCourseViewModel
+
+@section PageTitle {Create New Course}
+@section StyleSheet {
+    <link rel="stylesheet" href="~/css/CourseCreate.css" />
+}
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto"></ul>
+}
+
+@section NavBarButtons {
+    <button type="button" class="nav-user-menu btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/teacher/dashboard">Dashboard</a>
+        <a class="dropdown-item" href="/home/logout">Sign Out</a>
+    </div>
+}
+@{
+    ViewData["Title"] = "Create New Course";
+}
+
+<h2>Edit Course</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4 createGrid ">
+
+        <form asp-controller="Course" asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" asp-items="Model.Categories" class="btn btn-info btn-Brian dropdown-toggle"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstimatedDuration" class="control-label"></label>
+                <input asp-for="EstimatedDuration" class="form-control" />
+                <span asp-validation-for="EstimatedDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-secondary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

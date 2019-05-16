@@ -1,0 +1,66 @@
+﻿@model eLearning.Models.CurriculaLineItemViewModel
+@section PageTitle {CurriculaDetail}
+@section StyleSheet {
+    <link rel="stylesheet" href="~/css/LandingPage.css" />
+}
+@{
+    ViewData["Title"] = "CurriculaDetailEdit";
+}
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto"></ul>
+}
+
+@section NavBarButtons {
+    <button type="button" class="nav-user-menu btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/teacher/dashboard">Dashboard</a>
+        <a class="dropdown-item" href="/home/logout">Sign Out</a>
+    </div>
+}
+
+<h2>Curricula Line Item Edit</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CurriculaDetailEdit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="display: none">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: none">
+                <label asp-for="CurriculaId" class="control-label"></label>
+                <input asp-for="CurriculaId" class="form-control" />
+                <span asp-validation-for="CurriculaId" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: none">
+                <label asp-for="CurriculaTypeId" class="control-label"></label>
+                <input asp-for="CurriculaTypeId" class="form-control" />
+                <span asp-validation-for="CurriculaTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FileName" class="control-label"></label>
+                <input asp-for="FileName" class="form-control" />
+                <span asp-validation-for="FileName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-secondary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="CurriculaDetail" asp-route-id="@(Model.CurriculaId)">Back to List</a>
+</div>
+

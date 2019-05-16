@@ -1,0 +1,74 @@
+main{
+	background-color: aliceblue;
+/*  background-color: #fef9b4; */
+/*	background-color: #f6ee31; */
+}
+
+.card {
+    /*border: 1px solid #3d7bce;*/
+    box-shadow: 10px 10px 5px grey;
+}
+
+.courseList {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 275px);
+	grid-gap: 3rem;
+	margin: 0 9% 0 9%;
+}
+
+.courseBlock {
+	border: 1px solid red;
+	display: flex;
+	flex-direction: column;
+	background-color: #ffffff;
+}
+
+.courseBlock img {
+	width: 100%; 
+	height: auto;
+	border: 1px solid blue;
+}
+
+.priceLine {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	border: 1px solid blue;
+}
+
+.fullPrice {
+	width: 49%;
+	border: 1px solid black;
+}
+
+.discountPrice {
+	width: 49%;
+	border: 1px solid black;
+}
+
+.enroll {
+    font-size: 30px;
+    background-color: #fc7136;
+    color: white;
+    text-align: center;
+}
+
+.enroll-button {
+    align-content:center;
+    justify-content:center;
+    align-items:center;
+}
+
+.has-error {
+    color : red;
+}
+
+.browse-course-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.syllabus-button {
+    margin-left: 10px;
+}

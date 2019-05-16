@@ -1,0 +1,121 @@
+﻿@model eLearning.Models.CourseCurriculaViewModel
+@section PageTitle {Courses}
+@section StyleSheet {
+    <link rel="stylesheet" href="~/css/LandingPage.css" />
+}
+
+@{
+    ViewData["Title"] = "CourseCurricula";
+}
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto"></ul>
+}
+
+@section NavBarButtons {
+    <button type="button" class="nav-user-menu btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/teacher/dashboard">Dashboard</a>
+        <a class="dropdown-item" href="/home/logout">Sign Out</a>
+    </div>
+}
+<h2>@Model.Name</h2>
+
+<div>
+    @*<h4>CourseCurriculaViewModel</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedDuration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedDuration)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeacherId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherFirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeacherFirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherLastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeacherLastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+    </dl>
+</div>
+<hr>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+
+            <th class="success">
+                Course Session
+            </th>
+            <th class="warning">
+                Description
+            </th>
+            <th class="danger"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.myCurricula)
+        {
+            <tr>
+
+                <td class="success">
+                    @Html.DisplayFor(modelItem => item.CourseSession)
+                </td>
+                <td class="warning">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="danger">
+                    @Html.ActionLink("Edit", "DetailEdit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "CurriculaDetail", new { id = item.Id })
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id})*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<div>
+    <a asp-action="CurriculaAdd" asp-route-courseid="@(Model.Id)">Add New Curricula Item</a><br>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,58 @@
+﻿@model CourseFullDataViewModel
+@section PageTitle {eLearning Teacher Detail}
+@section StyleSheet {
+    <link rel="stylesheet" href="~/css/TeacherDetailPage.css" />
+}
+
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto"></ul>
+}
+
+@section NavBarButtons {
+    <button type="button" class="nav-user-menu btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <span class="dropdown-item-text">@(Model.DisplayUser)</span>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/teacher/dashboard">Dashboard</a>
+        <a class="dropdown-item" href="/home/logout">Sign Out</a>
+    </div>
+}
+
+@section Scripts {
+    <script src="~/js/TeacherDetailPage.js"></script>
+}
+
+<main>
+    <span>Teacher Course Detail</span>
+    @*        @foreach (Curricula sessionItem in @Model.myCurricula)  *@
+    @for (int i = 0; i < @Model.MyCurricula.Count; i++)
+    {
+        Curricula sessionItem = @Model.MyCurricula[i];
+        var sessionLines = @Model.MyCurriculaLineItems[i];
+        <div class="sectionBlock">
+            <div class="sectionInfo" data-section-number="@(sessionItem.CourseSession)">
+                <p>Section: @(sessionItem.CourseSession) </p>
+                <p>@(sessionItem.Description)</p>
+                <div class="session-lines">
+                    @for (int j = 0; j < sessionLines.Count; j++)
+                    {
+                        <div class="session-item" data-line-item="@(sessionLines[j].LineItem)">
+                            <i class="far fa-play-circle fa-2x"></i>
+                            <p>@(sessionLines[j].Id)</p>
+                            <p>@(sessionLines[j].Description)</p>
+                            <p>@(sessionLines[j].LineItem)</p>
+                            <i class="far fa-check-circle fa-2x"></i>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+    <div class="sectionBlock">
+        <div class="sectionInfo">
+            <a href="#"> Add New Section</a>
+        </div>
+    </div>
+</main>

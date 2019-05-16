@@ -1,0 +1,88 @@
+﻿@model BrowseViewModel
+@section PageTitle {eLearning Browse}
+@section StyleSheet {
+    <link rel="stylesheet" href="~/css/BrowsePage.css" />
+}
+
+
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto"></ul>
+}
+
+@section NavBarButtons {
+    <button type="button" class="nav-user-menu btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/student/dashboard?studentId=@(Model.BrowseStudentId)">Dashboard</a>
+        <a class="dropdown-item" href="/home/logout">Sign Out</a>
+    </div>
+}
+
+@section Scripts {
+    <script src="~/js/BrowsePage.js"></script>
+}
+
+<main>
+    <p class="has-error"> @TempData["error"]</p>
+    <div class="courseList card-deck">
+        @foreach (BrowseModel course in @Model.BrowseCourseList)
+        {
+            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 20rem;">
+                @{
+                    string source = "~/images/" + course.Image;
+                }
+                <h5 class="card-title">@(course.Name)</h5>
+
+                @if (course.Image == "")
+                {
+                    <img src="~/images/helloquence-61189-unsplash.jpg" class="card-img-top" alt="..." />
+                }
+                else
+                {
+                    <img src="@(Url.Content(source))" class="card-img-top" alt="..." />
+                }
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Instructor: @(course.TeacherName)</li>
+                            <li class="list-group-item">Duration: @(course.EstimatedDuration)</li>
+                            <li class="list-group-item">Rating: @(course.CourseRating)</li>
+                        </ul>
+                        <div class="browse-course-btns">
+                            <form asp-controller="Student" asp-action="Enroll" method="post" asp-route-courseId="@course.Id.ToString()">
+                                <div class="enroll-button">
+                                    <button type="submit" class="btn btn-primary">Enroll Now</button>
+                                </div>
+                            </form>
+                            <form asp-controller="Student" asp-action="Detail" method="post" asp-route-courseId="@course.Id.ToString()">
+                                <div class="syllabus-button">
+                                    <button type="submit" class="btn btn-primary">Syllabus</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+            </div>
+        }
+        @*<div class="courseList card-deck">
+            @foreach (BrowseViewModel browseVM in @Model)
+            {
+                <div class="card" style="width: 20rem;">
+                    <h5 class="card-title">@(browseVM.Name)</h5>
+                    <img src="~/images/coursedefault.jpg" class="card-img-top" alt="..." />
+                    <div class="card-body" >
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Instructor: @(browseVM.TeacherName)</li>
+                            <li class="list-group-item">Rating: @(browseVM.CourseRating)</li>
+                            <li class="list-group-item">Duration:  @(browseVM.EstimatedDuration) minutes</li>
+                            <a href="#" class="btn btn-primary" data-course-number="@(browseVM.Id)">Enroll Now</a>
+                        </ul>
+                    </div>
+                </div>
+            }*@
+    </div>
+</main>
+
+
+

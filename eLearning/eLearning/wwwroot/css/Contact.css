@@ -1,0 +1,19 @@
+main {
+    background-color: aliceblue;
+	display: flex;
+	flex-direction: column;
+
+}
+
+main div {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    color: #3d7bce;
+    height: 225px;
+    width: auto;
+}
+address {
+    font-size: 16px;
+}
+

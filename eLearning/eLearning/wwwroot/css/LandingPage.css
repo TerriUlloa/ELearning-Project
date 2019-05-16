@@ -1,0 +1,32 @@
+main {
+    background-color: aliceblue;
+    /*	background-color: #f5ee31; */
+    /*  background-color: #fef9b4; */
+}
+
+#homeBanner {
+	display: flex;
+	flex-direction: row;
+	height: 300px;
+	margin: auto;
+	justify-content: center;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.courseList {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(275px, 1fr) );
+    margin-left: 3%;
+    margin-right: 3%;
+    grid-row-gap: 20px;
+}
+
+.card {
+    /*border: 1px solid #3d7bce;*/
+    box-shadow: 10px 10px 5px lightgrey;
+}

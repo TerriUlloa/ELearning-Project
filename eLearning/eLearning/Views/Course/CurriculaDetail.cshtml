@@ -1,0 +1,125 @@
+﻿@model eLearning.Models.CurriculaDetailViewModel
+@section PageTitle {CurriculaDetail}
+@section StyleSheet {
+    <link rel="stylesheet" href="~/css/LandingPage.css" />
+}
+@{
+    ViewData["Title"] = "CurriculaDetail";
+}
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto"></ul>
+}
+
+@section NavBarButtons {
+    <button type="button" class="nav-user-menu btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/teacher/dashboard">Dashboard</a>
+        <a class="dropdown-item" href="/home/logout">Sign Out</a>
+    </div>
+}
+<h2>Curricula Line Items</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CourseId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseSession)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CourseSession)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+
+            <th class="warning">
+                Line Item
+            </th>
+            <th class="success">
+                Type
+            </th>
+            <th class="warning">
+                Description
+            </th>
+            <th class="warning">
+                URL
+            </th>
+            <th class="warning">
+                File Name
+            </th>
+            <th class="danger"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Details)
+        {
+            <tr>
+
+                <td class="warning">
+                    @Html.DisplayFor(modelItem => item.LineItem)
+                </td>
+                <td class="success">
+                    @Html.DisplayFor(modelItem => item.TypeName)
+                </td>
+                <td class="warning">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="warning">
+                    @if (item.URL != null)
+                    {
+                        <a href="@(Html.DisplayFor(modelItem => item.URL))">
+                            @(Html.DisplayFor(modelItem => item.URL))
+                        </a>
+                    }
+                    else
+                    {
+                        <span>N/A</span>
+                    }
+                </td>
+                <td class="warning">
+                    @if (item.FileName != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    }
+                    else
+                    {
+                        <span>N/A</span>
+                    }
+                </td>
+                <td class="danger">
+                    @Html.ActionLink("Edit", "CurriculaDetailEdit", new { lineItemId = item.Id }) 
+                    @*@Html.ActionLink("Delete", "DeleteCurriculaDetails", new { id = item.Id })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Details" asp-route-id="@(Model.CourseId)">Back to List</a>
+</div>

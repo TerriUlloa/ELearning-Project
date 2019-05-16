@@ -1,0 +1,26 @@
+﻿.createGrid {
+    margin-left: 50px;
+}
+
+.btn-Brian {
+    background-color: #fc7136;
+    /*!important;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fb7136", endColorstr="#fd7136");
+    background-image: -moz-linear-gradient(top, #fea642, #7f4400);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fea642), color-stop(100%, #7f4400));
+    background-image: -webkit-linear-gradient(top, #fea642, #7f4400);
+    background-image: -o-linear-gradient(top, #fea642, #7f4400);
+    background-image: linear-gradient(#fea642, #7f4400);
+    border-color: #fc7136 #fc7136 hsl(32, 100%, 15.5%);
+    color: #fff !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.62);
+    -webkit-font-smoothing: antialiased;*/
+}
+
+    .btn-Brian:hover, .btn-Brian:focus, .btn-Brian.focus,
+    .btn-Brian:active, .btn-Brian.active, .btn-Brian:visited,
+    .btn-Brian:active:hover, .btn-Brian.active:hover {
+        background-color: #fc7136;
+        border-color: #fc7136 #fc7136 hsl(32, 100%, 15.5%);
+    }

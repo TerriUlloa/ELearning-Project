@@ -1,0 +1,72 @@
+﻿
+
+@model StudentDashboardViewModel
+
+@section PageTitle {eLearning Student Dashboard}
+@section StyleSheet {
+    <link rel="stylesheet" href="~/css/StudentDashPage.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+}
+
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="/student/browse" id="navCourses">Browse Courses</a>';
+        </li>
+    </ul>
+}
+
+@section NavBarButtons {
+    <button type="button" class="nav-user-menu btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="/student/dashboard?studentId=@(Model.DashStudentId)">Dashboard</a>
+        <a class="dropdown-item" href="/home/logout">Sign Out</a>
+    </div>
+}
+
+@section Scripts {
+    <script src="~/js/StudentDashPage.js"></script>
+}
+
+<main>
+    <div class="student-dash">
+        <h2>Welcome back @Model.DashStudentName</h2>
+
+        <h4>Enrolled Courses</h4>
+
+        <div class="courseList card-deck">
+            @foreach (StudentDashboardModel course in @Model.DashCourseList)
+            {
+                <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 20rem;">
+                    <h5 class="card-title">@(course.CourseTitle)</h5>
+                    @{
+                        string source = "~/images/" + course.Image;
+                    }
+                    <h5 class="card-title">@(course.Name)</h5>
+
+                    @if (course.Image == "")
+                    {
+                        <img src="~/images/helloquence-61189-unsplash.jpg" class="card-img-top" alt="..." />
+                    }
+                    else
+                    {
+                        <img src="@(Url.Content(source))" class="card-img-top" alt="..." />
+                    }
+                    @*<img src="~/images/helloquence-61189-unsplash.jpg" class="card-img-top" alt="..." />*@
+                    <div class="card-body">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: @course.Progress%" aria-valuenow=@course.Progress aria-valuemin="0" aria-valuemax="100"></div>
+                            @*<div><p>@course.Progress% complete</p></div>*@
+                        </div>
+                        <div><p>@course.Progress% complete</p></div>
+                        <a href="#" class="btn btn-primary course-detail" data-course-number="@(course.CourseId)">Course Details</a>
+                        <a href="#" class="btn btn-primary course-start" data-course-number="@(course.CourseId)">Start Course</a>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</main>

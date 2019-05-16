@@ -1,0 +1,12 @@
+﻿main {
+    padding-left: 20%;
+    padding-right: 15%;
+    background-color: aliceblue;
+    justify-content:center;
+}
+.card {
+    align-self:center;
+}
+.syllabus-title {
+    align-content:center;
+}

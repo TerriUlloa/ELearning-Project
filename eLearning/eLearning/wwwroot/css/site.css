@@ -1,0 +1,141 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+html {
+	font-size: 14px;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+  background-color: aliceblue;
+}
+
+#content-wrap {
+  padding-bottom: 4.5rem;    /* Footer height */
+
+}
+
+#ydfooter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4.5rem;            /* Footer height */
+  background-color: aliceblue;
+}
+
+/*Navigation bar settings, affected by the header class*/
+.navbar {
+    height: 75px;
+    margin: 0;
+    /*   background-color: #fc6120; */
+    background-color: #3d7bce;
+    padding: 0;
+}
+
+.navbar-brand {
+    height: 50px;
+/*	border: 1px solid black; */
+}
+
+.navbar-brand img {
+    max-height: 100%;
+    height: 100%;
+    width: auto;
+    margin: 0 auto;
+}
+
+.navbar a {
+    text-decoration: none;
+    border-collapse: collapse;
+	box-sizing: content-box;
+    color: black;
+} 
+
+
+/*Changes the list style on navigation bar (currently set to an unordered list)*/
+.navbar ul {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+} 
+
+/*Affects the individual labels on the navbar */
+.navbar li {
+    display: inline;
+    padding: 15px;
+}
+
+#navbarSupportedContent {
+	height: 50px !important;
+}
+
+.nav-login {
+	margin: 3px 3px 3px 3px;
+    color: #ffffff;
+}
+
+.nav-register {
+	margin: 3px 2px 3px 3px;
+    color: #ffffff;
+}
+
+/*Affects the anchors attached to each list item on the navbar */
+.nav-link {
+	font-weight: bold;
+	font-size: 150%;
+}
+
+#navCourses {
+    color: aliceblue;
+    border: 1px solid;
+}
+/*
+#navCategories {
+	border: 1px solid black;
+}
+
+#navAbout {
+	border: 1px solid black;
+}
+*/
+/*****************************************************************/
+.foot {
+    background-color: aliceblue;
+}
+.footer-brand {
+	display:flex;
+	flex-direction: row;
+	width: 100%;
+	height: 60px;
+	justify-content: flex-start;
+    align-content:center;
+    background-color: aliceblue;
+	padding-top: 20px;
+    margin-left:20px;
+    font-size: 16px;
+}
+footer hr {
+    padding: 0;
+    margin: 0;
+}
+.footer-brand > p {
+    align-items:baseline;
+	width: 20%;
+}
+
+.footer-link {
+	width: 20%;
+    white-space: nowrap; 
+}
+
+#footer-logo {
+	height: 30px;
+    border-radius :50%;
+    align-items:flex-end;
+}
+
+.footerInfo {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: row;
+}

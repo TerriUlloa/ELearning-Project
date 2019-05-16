@@ -1,0 +1,52 @@
+﻿@model CourseFullDataViewModel
+@section PageTitle {Courses}
+@section StyleSheet {
+    <link rel="stylesheet" href="~/css/CourseParticipatePage.css" />
+}
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto"></ul>
+}
+
+@section NavBarButtons {
+    <button type="button" class="nav-user-menu btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/student/dashboard?studentId=@(Model.FullDataUserId)">Dashboard</a>
+        <a class="dropdown-item" href="/home/logout">Sign Out</a>
+    </div>
+}
+
+<main>
+    @for (int i = 0; i < @Model.MyCurricula.Count; i++)
+    {
+        Curricula sessionItem = @Model.MyCurricula[i];
+        var sessionLines = @Model.MyCurriculaLineItems[i];
+        <div class="sectionBlock">
+            <div class="sectionInfo" data-section-number="@(sessionItem.CourseSession)">
+                <p>Section: @(sessionItem.CourseSession) </p>
+                <p>@(sessionItem.Description)</p>
+                <div class="sectionButton">
+                    <button type="button" class="section-expand btn btn-lg btn-outline-primary" data-section-number="@(sessionItem.CourseSession)">Expand</button>
+                </div>
+                <div class="section-lines">
+                    @for (int j = 0; j < sessionLines.Count; j++)
+                    {
+                        <div class="session-item" data-line-item="@(sessionLines[j].LineItem)">
+                            <i class="far fa-play-circle fa-2x" data-line-index="@(sessionLines[j].Id)"></i>
+                            @*<p>@(sessionLines[j].Id)</p> *@
+                            <p>@(sessionLines[j].LineItem)</p>
+                            <a href="@(Url.Content(sessionLines[j].URL))" target="_blank">@(sessionLines[j].Description)</a>
+                            @*<p>@(sessionLines[j].CurriculaTypeId)</p> *@
+                            <i class="far fa-check-circle fa-2x"></i>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</main>
+@section Scripts {
+    <script src="~/js/CourseParticipatePage.js"></script>
+}

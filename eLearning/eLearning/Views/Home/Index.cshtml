@@ -1,0 +1,56 @@
+﻿@model IList<LandingViewModel>
+
+@section PageTitle {eLearning Home}
+
+@section StyleSheet {
+    <link rel="stylesheet" href="~/css/LandingPage.css" />
+}
+
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto">
+    </ul>
+}
+
+@section NavBarButtons {
+    <button class="nav-login btn btn-lg btn-outline-light" type="button">Login</button>
+    <button class="nav-register btn btn-lg btn-outline-light" type="button">Free Sign Up</button>
+}
+
+@section Scripts {
+    <script src="~/js/LandingPage.js"></script>
+}
+
+<main>
+    <div id="homeBanner">
+        @*@<img src="~/images/eLearingBanner.svg" /> *@
+        <img src="~/images/LandingBanner.jpg" />"
+    </div>
+    <div class="courseList card-deck">
+        @foreach (LandingViewModel landingVM in @Model)
+        {
+        <div class="card pointer" style="width: 20rem;">
+            <h5 class="card-title">@(landingVM.Name)</h5>
+            @{
+                string source = "~/images/" + landingVM.Image;
+            }
+
+            @if (landingVM.Image == "")
+            {
+                <img src="~/images/helloquence-61189-unsplash.jpg" class="card-img-top" alt="..." />
+            }
+            else
+            {
+                <img src="@(Url.Content(source))" class="card-img-top" alt="..." />
+            }
+            @*                <img src="~/images/helloquence-61189-unsplash.jpg" class="card-img-top" alt="..." /> *@
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Instructor: @(landingVM.TeacherName)</li>
+                    <li class="list-group-item">Rating: @(landingVM.CourseRating)</li>
+                    <li class="list-group-item">Duration:  @(landingVM.EstimatedDuration) minutes</li>
+                </ul>
+            </div>
+        </div>
+        }
+    </div>
+</main>

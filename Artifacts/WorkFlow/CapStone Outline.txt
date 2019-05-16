@@ -1,0 +1,31 @@
+WorkFlow
+
+Unauthenticated
+	Landing view 5 courses
+		Clicking on any course will redirect to login
+	Login/Register on Nav Bar
+	
+Authenticated Teacher
+	Teacher Landing Page 
+		shows list of all courses owned.
+		Filter/Search of above courses to limit view.
+		Clicking a course displays info about course
+			Features
+				Student List enrolled
+				Edit Course/Curricula
+				Grade Documents(Homework/quiz/test/projects)...
+		Add New Course/Curricula
+		
+Authenticated Student
+	Student Landing Page
+		Shows list of all courses enrolled.
+			Link to Enroll in new course
+				Show a list of courses not enrolled(or just all).
+					Clicking allows us to enrolled
+			Clicking an enrolled course Opens up the Curricula page for that course with progress.
+				Selecting a curricula item allows us to show the curriula line items.
+					Items can be (lecture, reading assignment, homework, quiz/test/projects).
+					Clicking a curricula line item allows us to "complete" item.
+					
+					
+	

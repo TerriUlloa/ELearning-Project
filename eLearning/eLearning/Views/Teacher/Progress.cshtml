@@ -1,0 +1,37 @@
+﻿@model List<StudentProgressViewModel>
+@section PageTitle {eLearning Student Progress}
+@section StyleSheet {
+    <link rel="stylesheet" href="~/css/TeacherProgressPage.css" />
+}
+
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto"></ul>
+}
+
+@section NavBarButtons {
+    <button type="button" class="nav-user-menu btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/teacher/dashboard">Dashboard</a>
+        <a class="dropdown-item" href="/home/logout">Sign Out</a>
+    </div>
+}
+
+@section Scripts {
+    <script src="~/js/TeacherProgressPage.js"></script>
+}
+
+<main>
+    <h2>Student Progress Report</h2>
+    @foreach (StudentProgressViewModel studentData in @Model )
+    {
+    <div class="student-data-line">
+        <h4>@(studentData.LastName), @(studentData.FirstName)</h4>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: @(studentData.Progress)%" aria-valuenow=@(studentData.Progress) aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+    }
+</main>

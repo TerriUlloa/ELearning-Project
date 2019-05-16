@@ -1,0 +1,57 @@
+﻿@model BrowseViewModel
+@section PageTitle {eLearning Teacher Dashboard}
+@section StyleSheet {
+    <link rel="stylesheet" href="~/css/TeacherDashPage.css" />
+}
+
+@section NavBarOptions {
+    <ul class="navbar-nav mr-auto"></ul>
+}
+
+@section NavBarButtons {
+    <button type="button" class="nav-user-menu btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/teacher/dashboard">Dashboard</a>
+        <a class="dropdown-item" href="/home/logout">Sign Out</a>
+    </div>
+}
+
+@section Scripts {
+    <script src="~/js/TeacherDashPage.js"></script>
+}
+
+    <main>
+        <div class="courseList card-deck">
+            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 20rem;">
+                <h5 class="card-title">Create A New Course</h5>
+                <img src="~/images/coursedefault.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Students: 0</li>
+                        <li class="list-group-item">Rating: 0</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary course-add" data-course-number=0>Create Course</a>
+                </div>
+            </div>
+            @foreach (BrowseModel browseVM in @Model.BrowseCourseList)
+            {
+                <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 20rem;">
+                    <h5 class="card-title">@(browseVM.Name)</h5>
+                    <img src="~/images/helloquence-61189-unsplash.jpg" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Students: @(browseVM.StudentCount)</li>
+                            <li class="list-group-item">Rating: @(browseVM.CourseRating)</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary student-list" data-course-number="@(browseVM.Id)">Student Progress</a>
+                        <a href="#" class="btn btn-primary course-edit" data-course-number="@(browseVM.Id)">Edit Course Info</a>
+                        <a href="#" class="btn btn-primary content-add" data-course-number="@(browseVM.Id)">Add Course Content</a>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </main>
